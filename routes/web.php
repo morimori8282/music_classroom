@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,17 @@ Route::get('/', function () {
 // REST
 Route::resource('reservations', ReservationController::class)->only([
     'index', 'show'
-]);
-// ])->middleware('auth');
+// ]);
+])->middleware('auth');
+
+
+// REST
+Route::resource('users', UserController::class)->only([
+    'index', 'show'
+// ]);
+])->middleware('auth');
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

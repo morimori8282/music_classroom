@@ -67,6 +67,12 @@
         </div>
     </x-slot>
 
+    <div class="col-span-6 sm:col-span-4">
+        <x-jet-label for="birth" value="{{ __('生年月日') }}" />
+        <x-jet-input id="birth" type="date" class="mt-1 block w-full" wire:model.defer="state.birth" />
+        <x-jet-input-error for="birth" class="mt-2" />
+    </div>
+
     <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
             {{ __('Saved.') }}
