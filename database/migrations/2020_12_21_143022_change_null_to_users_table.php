@@ -15,7 +15,7 @@ class ChangeNullToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('officail_name', 255)->nullable()->change();
+            $table->string('official_name', 255)->nullable()->change();
             $table->string('phonetic_name', 255)->nullable()->change();
             $table->string('salt', 255)->nullable()->change();
             $table->integer('gender')->nullable()->change();

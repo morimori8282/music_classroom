@@ -22,14 +22,14 @@ Route::get('/', function () {
 
 // REST
 Route::resource('reservations', ReservationController::class)->only([
-    'index', 'show'
+    'index', 'show', 'create', 'edit'
 // ]);
 ])->middleware('auth');
 
 
 // REST
 Route::resource('users', UserController::class)->only([
-    'index', 'show'
+    'index', 'show', 'create', 'edit', 'store', 'update'
 // ]);
 ])->middleware('auth');
 

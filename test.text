@@ -1,0 +1,20 @@
+
+In ArgvInput.php line 186:
+                                                            
+  [Symfony\Component\Console\Exception\RuntimeException]    
+  No arguments expected for "route:list" command, got "-".  
+                                                            
+
+Exception trace:
+  at /var/www/html/vendor/symfony/console/Input/ArgvInput.php:186
+ Symfony\Component\Console\Input\ArgvInput->parseArgument() at /var/www/html/vendor/symfony/console/Input/ArgvInput.php:80
+ Symfony\Component\Console\Input\ArgvInput->parse() at /var/www/html/vendor/symfony/console/Input/Input.php:55
+ Symfony\Component\Console\Input\Input->bind() at /var/www/html/vendor/symfony/console/Command/Command.php:214
+ Symfony\Component\Console\Command\Command->run() at /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php:121
+ Illuminate\Console\Command->run() at /var/www/html/vendor/symfony/console/Application.php:971
+ Symfony\Component\Console\Application->doRunCommand() at /var/www/html/vendor/symfony/console/Application.php:290
+ Symfony\Component\Console\Application->doRun() at /var/www/html/vendor/symfony/console/Application.php:166
+ Symfony\Component\Console\Application->run() at /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Application.php:93
+ Illuminate\Console\Application->run() at /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:129
+ Illuminate\Foundation\Console\Kernel->handle() at /var/www/html/artisan:37
+
