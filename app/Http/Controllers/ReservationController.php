@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Reservation;
+use App\Models\User;
 
 class ReservationController extends Controller
 {
@@ -13,7 +15,14 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        // dd('A');
+        $reservations = Reservation::all()->where('deleted_at', null);
+
+        foreach($reservations as $reservation){
+           $user = User::find($reservation->id);
+           $reservation->user_official_name = $user->official_name;
+           $reservation->user_phonetic_name = $user->phonetic_name;
+        }
+        
         return view('reservations.index');
     }
 

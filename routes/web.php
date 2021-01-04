@@ -21,17 +21,10 @@ Route::get('/', function () {
 });
 
 // REST
-Route::resource('reservations', ReservationController::class)->only([
-    'index', 'show', 'create', 'edit'
-// ]);
-])->middleware('auth');
-
+Route::resource('reservations', ReservationController::class)->middleware('auth');
 
 // REST
-Route::resource('users', UserController::class)->only([
-    'index', 'show', 'create', 'edit', 'store', 'update'
-// ]);
-])->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
 
 
 

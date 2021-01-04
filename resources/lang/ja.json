@@ -149,5 +149,8 @@
     "You have not enabled two factor authentication.": "二段階認証未設定",
     "You may delete any of your existing tokens if they are no longer needed.": "不要なAPIトークンを削除する。",
     "You may not delete your personal team.": "パーソナルチームを削除することはできません。",
-    "You may not leave a team that you created.": "自身が作成したチームを離れることはできません。"
+    "You may not leave a team that you created.": "自身が作成したチームを離れることはできません。",
+
+    "Users": "ユーザ一覧",
+    "Reservations": "予約一覧"
 }

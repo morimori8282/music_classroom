@@ -38,10 +38,16 @@
                                 <td>{{$user->official_name}}</td>
                                 <td>{{$user->phonetic_name}}</td>
                                 <td>{{$user->birthday}}</td>
-                                <td>{{$user->gender}}</td>
+                                <td>{{$user->gender_name}}</td>
                                 <td>{{$user->address}}</td>
                                 <td><a href="{{ route('users.edit', [$user->id]) }}">詳細</a></td>
-                                <td><a data-confirm="削除します?" rel="nofollow" data-method="delete" href="/users/2">削除</a></td>
+                                <td>
+                                    <form action="{{ route('users.destroy', [$user->id]) }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="submit" value="削除">
+                                    </form>
+                                </td>
                             </tr>
                         </tbody>
                     @endforeach

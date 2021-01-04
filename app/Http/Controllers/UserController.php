@@ -14,8 +14,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->where('deleted_at', null);
         // dd($users);
+        foreach ($users as $user){
+            if ($user->gender === 1){
+                $user->gender_name = '男';
+            } elseif ($user->gender === 2) {
+                $user->gender_name = '女';
+            } elseif ($user->gender === 3) {
+                $user->gender_name = 'その他';
+            } else {
+                $user->gender_name = '';
+            }
+        }
+
         return view('users.index', ['users' => $users] );
     }
 
@@ -72,6 +84,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        // dd('show');
         $user = User::find($id);
         return view('users.show', ['user' => $user] );
     }
@@ -99,6 +112,27 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+        
+        $user->name = $request->input('name');
+        // $user->password = $request->input('password');
+        $user->official_name = $request->input('official_name');
+        $user->phonetic_name = $request->input('phonetic_name');
+        $user->gender = $request->input('gender');
+        $user->birthday = $request->input('birthday');
+        $user->tel = $request->input('tel');
+        $user->email = $request->input('email');
+        $user->zip = $request->input('zip');
+        $user->pref = $request->input('pref');
+        $user->address = $request->input('address');
+        $user->building = $request->input('building');
+        $user->remark = $request->input('remark');
+
+        $user->save();
+
+        // return redirect('users/index');
+        // return redirect('user/index');
+        return redirect('users');
     }
 
     /**
@@ -109,6 +143,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // 論理削除
+        $user = User::find($id);
+        
+        $user->deleted_at = date("Y-m-d H:i:s");
+
+        $user->save();
+
+        return redirect('users');
     }
 }
