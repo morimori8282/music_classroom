@@ -15,6 +15,7 @@ class SelectorsSeeder extends Seeder
     public function run()
     {
         // initialize
+        DB::table('sys_selectors')->truncate();
 
         /**
          *  gender
