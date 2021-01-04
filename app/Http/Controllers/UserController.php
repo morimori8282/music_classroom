@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Services\ChangeValue;
 
 class UserController extends Controller
 {
@@ -17,15 +18,10 @@ class UserController extends Controller
         $users = User::all()->where('deleted_at', null);
         // dd($users);
         foreach ($users as $user){
-            if ($user->gender === 1){
-                $user->gender_name = '男';
-            } elseif ($user->gender === 2) {
-                $user->gender_name = '女';
-            } elseif ($user->gender === 3) {
-                $user->gender_name = 'その他';
-            } else {
-                $user->gender_name = '';
-            }
+
+            // 性別名称
+            $user->gender_name = ChangeValue::getIdToName('gender', $user->gender);
+
         }
 
         return view('users.index', ['users' => $users] );
